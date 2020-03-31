@@ -10,17 +10,39 @@
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- Bootstrap4 Duallistbox -->
+    <link rel="stylesheet" href="plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
     <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700">
     <!-- jQuery lib -->
     <link rel="script" href="jquery-3.4.1.slim.js">
+    <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>
-    <script src="load_menu.js"></script>
-
+    <!-- Bootstrap 4 -->
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap4 Duallistbox -->
+    <script src="plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+    <!-- InputMask -->
+    <script src="plugins/moment/moment.min.js"></script>
+    <script src="plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+    <!-- date-range-picker -->
+    <script src="plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="dist/js/demo.js"></script>
+    <!-- ChartJS -->
+    <script src="plugins/chart.js/Chart.min.js"></script>
+    <!-- Tools file for basic function of the site -->
+    <script src="tools.js"></script>
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed" onload="cargarMenu();">
@@ -34,7 +56,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="../../index3.html" class="nav-link">Inicio</a>
+                <a href="index.php" class="nav-link">Inicio</a>
             </li>
         </ul>
 
@@ -57,7 +79,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index.html" class="brand-link">
+        <a href="index.php" class="brand-link">
             <img src="dist/img/AdminLTELogo.png"
                  alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3"
@@ -99,7 +121,6 @@
                         <div class="small-box bg-info">
                             <div class="inner">
                                 <h3>0</h3>
-
                                 <p>Evaluaciones pendientes</p>
                             </div>
                             <div class="icon">
@@ -116,7 +137,6 @@
                         <div class="small-box bg-success">
                             <div class="inner">
                                 <h3>0</h3>
-
                                 <p>Evaluaciones concluidas</p>
                             </div>
                             <div class="icon">
@@ -133,7 +153,6 @@
                         <div class="small-box bg-warning">
                             <div class="inner">
                                 <h3>0</h3>
-
                                 <p>Asistencias diarias</p>
                             </div>
                             <div class="icon">
@@ -150,7 +169,6 @@
                         <div class="small-box bg-danger">
                             <div class="inner">
                                 <h3>0</h3>
-
                                 <p>Usuarios activos</p>
                             </div>
                             <div class="icon">
@@ -165,7 +183,6 @@
                 </div>
                 <!-- /.row -->
 
-
             </div><!-- /.container-fluid -->
         </section>
 
@@ -176,10 +193,9 @@
                 <div class="row">
                     <div class="col-12">
                         <!-- Default box -->
-                        <div class="card">
+                        <div class="card d-none">
                             <div class="card-header">
                                 <h3 class="card-title">Titulo</h3>
-
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                                         <i class="fas fa-minus"></i></button>
@@ -199,6 +215,26 @@
                         <!-- /.card -->
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-12">
+                        <!-- PIE CHART -->
+                        <div class="card card-danger">
+                            <div class="card-header">
+                                <h3 class="card-title">Resultados mensuales</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="update"><i class="fas fa-circle-notch"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 500px; max-width: 100%;"></canvas>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
             </div>
         </section>
         <!-- /.content -->
@@ -206,13 +242,7 @@
     <!-- /.content-wrapper -->
 
     <footer class="main-footer">
-        <!--
-        <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.0.2
-        </div>
-        <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-        reserved.
-        -->
+
     </footer>
 
     <!-- Control Sidebar -->
@@ -222,16 +252,5 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
 </body>
 </html>

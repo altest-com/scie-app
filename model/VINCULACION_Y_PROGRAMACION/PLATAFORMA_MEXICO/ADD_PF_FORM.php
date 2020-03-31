@@ -1,0 +1,45 @@
+<?php
+header("Content-Type: text/html;charset=utf-8");
+include("../../conexion.php");
+
+$ID_CANDIDATO = $_POST['ID_CANDIDATO'];
+$ID_EVALUACION = $_POST['ID_EVALUACION'];
+$CURP = $_POST['CURP'];
+$SUIC = $_POST['SUIC'];
+$CUIP = $_POST['CUIP'];
+$NCP = $_POST['NCP'];
+$REFERENCIA_DE_PROCESADOS  = $_POST['REFERENCIA_DE_PROCESADOS'];
+$VISITAS_DE_PROCESADOS = $_POST['VISITAS_DE_PROCESADOS'];
+$COPARTICIPE_PROCESADOS = $_POST['COPARTICIPE_PROCESADOS'];
+$IPH  = "Vacio";
+$MFC = "Vacio";
+$MFF = "Vacio";
+$REPUVE = "Vacio";
+$ARCHIVO_REFERENCIA = "Vacio";
+$ARCHIVO_VISITA = "Vacio";
+$ARCHIVO_COPARTICIPE = "Vacio";
+
+/*LA CONSULTA SE ENCARGA DE ELIMINAR LA INFORMACIÓN DEL REGISTRO QUE PERTENEZCA A UNA EVALUACIÓN QUE YA TENGA DATOS PARA SOBREESCRIBIR SU
+*INFROMACIÓN (UN UPDATE, PERO CREA SI NO EXISTE)
+*/
+$sqlDel = ("DELETE FROM PLATAFORMA_MEXICO WHERE ID_EVALUACION = '$ID_EVALUACION'");
+$conexion->set_charset("utf8");
+if ($conexion->query($sqlDel) === TRUE) {
+   	echo "true";
+} else {
+    echo "false";
+}
+
+//INSERCIÓN DE DATOS EN LA TABLA PLATAFORMA MEXICO
+$sql = ("INSERT INTO PLATAFORMA_MEXICO VALUES('$ID_CANDIDATO', '$ID_EVALUACION', '$CURP', '$SUIC', '$CUIP', '$NCP', '$REFERENCIA_DE_PROCESADOS', '$VISITAS_DE_PROCESADOS', '$COPARTICIPE_PROCESADOS', '$IPH', '$MFC', '$MFF', '$REPUVE','$ARCHIVO_REFERENCIA', '$ARCHIVO_VISITA', '$ARCHIVO_COPARTICIPE')");
+
+	$conexion->set_charset("utf8");
+
+	if ($conexion->query($sql) === TRUE) {
+   	 	echo "true";
+	} else {
+    	echo "false";
+}
+$conexion->close();
+
+?>
