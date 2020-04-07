@@ -4,11 +4,11 @@
 
         loadData: function(filter) {
             return $.grep(this.clients, function(client) {
-                return (!filter.Name || client.Name.indexOf(filter.Name) > -1)
-                    && (filter.Age === undefined || client.Age === filter.Age)
-                    && (!filter.Address || client.Address.indexOf(filter.Address) > -1)
-                    && (!filter.Country || client.Country === filter.Country)
-                    && (filter.Married === undefined || client.Married === filter.Married);
+                return (!filter.Nombre || client.Nombre.indexOf(filter.Nombre) > -1)
+                    && (filter.Edad === undefined || client.Edad === filter.Edad)
+                    && (!filter.CURP || client.CURP.indexOf(filter.CURP) > -1)
+                    && (!filter.RFC || client.RFC === filter.RFC)
+                    && (filter.Opciones === undefined || client.Opciones === filter.Opciones);
             });
         },
 
@@ -41,11 +41,11 @@
 
     db.clients = [
         {
-            "Name": "Otto Clay",
-            "Age": 61,
-            "Country": 6,
-            "Address": "Ap #897-1459 Quam Avenue",
-            "Married": false
+            "Nombre": "Otto Clay",
+            "Edad": 61,
+            "CURP": 6,
+            "RFC": "Ap #897-1459 Quam Avenue",
+            "Opciones": false
         },
         {
             "Name": "Connor Johnston",

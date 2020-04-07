@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- jsGrid -->
+    <link rel="stylesheet" href="plugins/jsgrid/jsgrid.min.css">
+    <link rel="stylesheet" href="plugins/jsgrid/jsgrid-theme.min.css">
     <!-- daterange picker -->
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- overlayScrollbars -->
@@ -31,6 +34,9 @@
     <!-- InputMask -->
     <script src="plugins/moment/moment.min.js"></script>
     <script src="plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+    <!-- jsGrid -->
+    <script src="plugins/jsgrid/demos/db.js"></script>
+    <script src="plugins/jsgrid/jsgrid.min.js"></script>
     <!-- date-range-picker -->
     <script src="plugins/daterangepicker/daterangepicker.js"></script>
     <!-- overlayScrollbars -->
@@ -43,6 +49,7 @@
     <script src="plugins/chart.js/Chart.min.js"></script>
     <!-- Tools file for basic function of the site -->
     <script src="tools.js"></script>
+    <script src="core/AjaxPost.js"></script>
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed" onload="cargarMenu();">

@@ -31,7 +31,7 @@ function makeJSFunctionName($str) : string {
     if (strcmp($str, "Dashboard") == 0) {
         return "index.php";
     }
-    $nameFunction = "javascript:load".str_replace(' ', '', $str)."();";
+    $nameFunction = "javascript:load('".str_replace(' ', '', $str)."');";
     return $nameFunction;
 }
 
