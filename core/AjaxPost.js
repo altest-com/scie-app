@@ -8,15 +8,6 @@ function AjaxPost(myUrl, queryString, successCallback, errorCallback) {
     })
 }
 
-function displaySuccessMessage() {
+function SendDataByAjax(myUrl, postData, successMsg, errorMsg, files) {
 
 }
-
-function displayWarningMessage() {
-
-}
-
-function displayErrorMessage() {
-
-}
-

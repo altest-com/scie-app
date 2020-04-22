@@ -21,10 +21,14 @@
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
     <!-- Bootstrap4 Duallistbox -->
     <link rel="stylesheet" href="plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700">
     <!-- jQuery lib -->
-    <link rel="script" href="jquery-3.4.1.slim.js">
+    <link rel="script" href="plugins/jquery-3-4-1/jquery-3.4.1.slim.js">
     <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -45,10 +49,16 @@
     <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
+    <!-- Custom Input File  -->
+    <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
     <!-- ChartJS -->
     <script src="plugins/chart.js/Chart.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+    <!-- Toastr -->
+    <script src="plugins/toastr/toastr.min.js"></script>
     <!-- Tools file for basic function of the site -->
-    <script src="tools.js"></script>
+    <script src="core/tools.js"></script>
     <script src="core/AjaxPost.js"></script>
 
 </head>

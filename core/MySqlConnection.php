@@ -74,7 +74,6 @@ class MySqlConnection
 				{
 					//print_r($array);
 					return json_encode($array, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-					return TRUE;
 				}
 				else
 				{
@@ -144,13 +143,13 @@ class MySqlConnection
 		if (strpos($message, "false") === false)
 		{
 			$this->commit();
-			echo "true";
+			//echo json_encode('true');
 			return TRUE;
 		}
 		else
 		{
 			$this->rollback();
-			echo "false";
+			//echo json_encode('false');
 			return FALSE;
 		}
 		//echo $message;

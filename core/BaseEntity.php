@@ -1,54 +1,64 @@
 <?php
-require_once (realpath(dirname(__FILE__).'/../config/connection.php'));
+require '../config/connection.php';
 require 'MySqlConnection.php';
 
 class BaseEntity
 {
     private $table;
-    private $conectar;
+    private $conexion;
 
     public function __construct($table)
     {
         global $db;
         global $user;
         global $pswd;
-        $this->conectar = new MySqlConnection($db, $user, $pswd);
+        $this->conexion = new MySqlConnection($db, $user, $pswd);
         $this->table = (string)$table;
     }
 
-    public function getConetar(){
-        return $this->conectar;
+    public function getConnection(){
+        return $this->conexion;
     }
 
-    public function getAll(){
+    public function closeConnection() {
+        $this->conexion->closeMySqlConnection();
+    }
 
-        $query = $this->conectar->executeSelectQuery("SELECT * FROM ".$this->table." ORDER BY id_menu DESC;", false);
-        return $query;
+    public function getAll($orderBy = "id"){
+
+        $result = $this->conexion->executeSelectQuery("SELECT * FROM ".$this->table." ORDER BY $orderBy DESC;", false);
+        return $result;
     }
 
     public function getById($id){
-        $query = $this->conectar->executeSelectQuery("SELECT * FROM $this->table WHERE id_menu=$id;", false);
-        return $query;
+        $result = $this->conexion->executeSelectQuery("SELECT * FROM $this->table WHERE id = $id;", false);
+        return $result;
     }
 
     public function getBy($column, $value){
-        $query = $this->conectar->executeSelectQuery("SELECT * FROM $this->table WHERE $column = '$value'");
-        return $query;
+        $result = $this->conexion->executeSelectQuery("SELECT * FROM $this->table WHERE $column = '$value';", false);
+        return $result;
     }
 
     public function deleteById($id){
-        $query = $this->conectar->executeUpdateQuery("DELETE FROM $this->table WHERE id_menu = $id");
-        return $query;
+        $result = $this->conexion->executeUpdateQuery("DELETE FROM $this->table WHERE id = $id;");
+        return $result;
     }
 
     public function deleteBy($column, $value){
-        $query = $this->conectar->executeUpdateQuery("DELETE FROM $this->table WHERE $column = '$value'");
-        return $query;
+        $result = $this->conexion->executeUpdateQuery("DELETE FROM $this->table WHERE $column = '$value';");
+        return $result;
     }
 
     public function updateById($id, $column, $value) {
-        $query = $this->conectar->executeUpdateQuery("UPDATE $this->table SET $column = '$value' WHERE id_menu = '$id'");
-        return $query;
+        $result = $this->conexion->executeUpdateQuery("UPDATE $this->table SET $column = '$value' WHERE id = '$id';");
+        return $result;
+    }
+
+
+    public function executeQuery($query) {
+        $result = $this->conexion->executeSelectQuery($query, false);
+        return $result;
     }
 
 

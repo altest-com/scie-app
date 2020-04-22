@@ -1,0 +1,27 @@
+<?php
+header("Content-type: text/html; charset=utf8");
+header('Content-type:application/json');
+require("../../../conexion.php"); 
+
+ 
+$ID_CANDIDATO = $_POST['ID_CANDIDATO'];
+$ID_EVALUACION = $_POST['ID_EVALUACION'];
+$depo = "TOXICOLÓGICO";
+
+$conexion->set_charset("utf8");
+
+
+
+	if ($result = $conexion->query("SELECT * FROM alerta_de_riesgo WHERE ID_CANDIDATO = '$ID_CANDIDATO' AND ID_EVALUACION = '$ID_EVALUACION' AND DEPARTAMENTO_ORIGEN = '$depo'")) {
+
+		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+            $myArray[] = $row;
+    	}
+    	echo json_encode($myArray,JSON_PRETTY_PRINT);
+    	$result -> close();
+
+    }
+
+
+$conexion -> close();
+?>

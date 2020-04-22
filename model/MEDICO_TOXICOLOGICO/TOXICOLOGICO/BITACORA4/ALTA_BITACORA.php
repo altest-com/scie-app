@@ -1,0 +1,57 @@
+<?php
+header("Content-type: text/html; charset=utf8");
+require("../../../conexion.php");
+include_once "../ConexionBD.php"; 
+
+$ID_CANDIDATO = $_POST['ID_CANDIDATO'];
+$ID_EVALUACION = $_POST['ID_EVALUACION'];
+$UROTELIO = $_POST['UROTELIO'];
+$BACTERIAS = $_POST['BACTERIAS'];
+$LEUCOCITOS = $_POST['LEUCOCITOS'];
+$PIOCITOS = $_POST['PIOCITOS'];
+$ERITROCITOS = $_POST['ERITROCITOS'];
+$PARASITOS = $_POST['PARASITOS'];
+$HONGOS = $_POST['HONGOS'];
+$LEVADURAS = $_POST['LEVADURAS'];
+$FILAMENTO_MUCINA = $_POST['FILAMENTO_MUCINA'];
+$CILINDROS = $_POST['CILINDROS'];
+$GRANULOSO = $_POST['GRANULOSO'];
+$OTRAS_ESTRUCTURAS = $_POST['OTRAS_ESTRUCTURAS'];
+$URATO_AMORFO = $_POST['URATO_AMORFO'];
+$FOSFATO_AMORFO = $_POST['FOSFATO_AMORFO'];
+$OTROS_CRISTALES = $_POST['OTROS_CRISTALES'];
+
+
+
+/*"INSERT INTO ASISTENCIA VALUES ('$ID_CANDIDATO', '$ID_EVALUACION', '$NOMBRE','$PRUEBA' ,'$FECHA', '$ASISTENCIA')"*/
+		$cone = conectarBD();
+		$lol = Verificar_bitacora4($cone,$ID_CANDIDATO, $ID_EVALUACION);
+		echo $lol;
+		$conexion->set_charset("utf8");
+
+		if($lol=="correcto"){
+			$sqlUpdate = "UPDATE toxicologico_bitacora4 SET UROTELIO = '$UROTELIO', BACTERIAS = '$BACTERIAS', LEUCOCITOS = '$LEUCOCITOS', PIOCITOS = '$PIOCITOS', ERITROCITOS = '$ERITROCITOS', PARASITOS = '$PARASITOS', HONGOS = '$HONGOS', LEVADURAS = '$LEVADURAS', FILAMENTO_MUCINA = '$FILAMENTO_MUCINA', CILINDROS = '$CILINDROS', GRANULOSO = '$GRANULOSO', OTRAS_ESTRUCTURAS = '$OTRAS_ESTRUCTURAS', URATO_AMORFO = '$URATO_AMORFO', FOSFATO_AMORFO = '$FOSFATO_AMORFO', OTROS_CRISTALES = '$OTROS_CRISTALES' WHERE ID_CANDIDATO = '$ID_CANDIDATO' AND ID_EVALUACION ='$ID_EVALUACION'";
+			if ($conexion->query($sqlUpdate) === TRUE) {
+		   	 	echo "true";
+			} 
+				else {
+		    	echo "false";
+					 }
+			
+		}
+
+		else{
+			$sqlInsert = "INSERT INTO toxicologico_bitacora4 VALUES ('$ID_CANDIDATO', '$ID_EVALUACION', '$UROTELIO','$BACTERIAS' ,'$LEUCOCITOS', '$PIOCITOS', '$ERITROCITOS', '$PARASITOS', '$HONGOS', '$LEVADURAS', '$FILAMENTO_MUCINA', '$CILINDROS', '$GRANULOSO', '$OTRAS_ESTRUCTURAS', '$URATO_AMORFO', '$FOSFATO_AMORFO', '$OTROS_CRISTALES')";
+
+			if ($conexion->query($sqlInsert) === TRUE) {
+		   	 	echo "true";
+			} 
+				else {
+		    	echo "false";
+					 }
+		}
+		
+
+$conexion->close();
+
+?>
